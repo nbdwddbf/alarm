@@ -1,0 +1,13 @@
+jar包中主要包含两部分：一部分是工具类MonitorAlarmUtil,另一部分是接口IAlarmService。
+MonitorAlarmUtil中有注册和注销两个方法，可以开启和关闭摄像头的报警布防功能；
+IAlarmService主要有一个待重写方法，实现之后可以获取抓拍得到的图片。
+
+首先用户需要实现（implements）IAlarmService接口，并重写onFaceSnaped方法，将获取到的图片保存到自己的目录当中；
+其次在需要new一个MonitorAlarmUtil对象，monitorAlarmUtil.register()方法就是开启报警布防，monitorAlarmUtil.logout()就是关闭报警布防功能。
+
+支持register(Map<String, Object>)和register(List<Map<String, Object>>)   monitorAlarmUtil.logout也同理
+例如：Map<String,Object> map = new HashMap<>();
+         map.put("ip", "127.0.0.1");
+         map.put("port", 8000);
+         map.put("username", "admin");
+         map.put("password", "******");
